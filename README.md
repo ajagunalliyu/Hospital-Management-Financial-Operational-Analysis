@@ -15,7 +15,15 @@ Hospital management needed a single, reliable answer to three operational questi
 - **Merging:** joined `treatments` → `billing` (on `treatment_id`) → `appointments` (on `appointment_id`) → `doctors` (on `doctor_id`) into a single `hospital_master_df`, 25 columns × 200 rows
 - **Data limitation worth flagging:** the `cost` (from treatments) and `amount` (from billing) columns are numerically identical across every row in this dataset - there's no variation from insurance adjustments, discounts, or partial payments. This is a known limitation of the synthetic dataset used for this exercise, not a finding about the hospital itself.
 
+[Python Script](notebook/Hospital_Management_Notebook.ipynb)
+
 ### Key Insights
+
+![](charts/revenue_by_treatment.png)
+
+![](charts/payment_status_method.png)
+
+![](charts/branch_specialization_revenue.png)
 
 - **"Two-thirds of billed revenue - $377,825 of $551,250, is stuck in Failed or Pending status, not actually collected"**, only 31.5% of revenue billed has been successfully collected as Paid. This is the single most urgent finding in the dataset; it dwarfs any individual treatment or branch performance gap.
 - **"Failed payments alone total $193,213 (35% of all billed revenue), spread fairly evenly across Cash, Credit Card, and Insurance"**, so because the failure isn't concentrated in one payment method, the root cause is more likely a systemic billing/processing issue than a problem specific to any one payment channel.
